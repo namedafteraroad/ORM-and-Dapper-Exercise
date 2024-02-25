@@ -31,7 +31,15 @@ namespace ORM_Dapper
                 Console.WriteLine($"Id: {depo.DepartmentId} Name:{depo.Name}");
             }
 
+            
 
+            var repo2 = new DapperProductRepository(conn);
+
+            repo2.CreateProduct("New Stuff", 89.2, 2);
+
+            var products = repo2.GetAllProducts();
+
+            foreach (var product in products) {  Console.WriteLine($"{product.Name}, {product.Price}, {product.ProductID}, {product.Price}, {product.CategoryID}, {product.OnSale}, {product.StockLevel}");}
         }
     }
 }
